@@ -5,19 +5,23 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import com.alinavevel.calculator.databinding.ActivityMainBinding
 import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
     var tvResult : TextView? = null;
     var lastDigit : Boolean = false;
     var buttonEquals : Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        tvResult = findViewById(R.id.tvresult)
-        buttonEquals = findViewById(R.id.equal)
+        tvResult =binding.tvresult
+        buttonEquals = binding.equal
 
         buttonEquals?.setOnClickListener {
             onEquals()
