@@ -4,7 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Alina/Desktop/QuizApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Alina/Desktop/repos/CourseAndroid/QuizApp/app/src/main/res/drawable/bg_text_view.xml" value="0.1395" />
+        <entry key="..\:/Users/Alina/Desktop/repos/CourseAndroid/QuizApp/app/src/main/res/drawable/correct_text_view.xml" value="0.1395" />
+        <entry key="..\:/Users/Alina/Desktop/repos/CourseAndroid/QuizApp/app/src/main/res/drawable/incurrect_text_view.xml" value="0.1395" />
+        <entry key="..\:/Users/Alina/Desktop/repos/CourseAndroid/QuizApp/app/src/main/res/drawable/selected_option_bg.xml" value="0.1395" />
         <entry key="..\:/Users/Alina/Desktop/repos/CourseAndroid/QuizApp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Alina/Desktop/repos/CourseAndroid/QuizApp/app/src/main/res/layout/activity_quiz.xml" value="0.25" />
       </map>
     </option>
   </component>
