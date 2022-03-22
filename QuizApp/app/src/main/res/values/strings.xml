@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">QuizApp</string>
     <string name="question">What country does tis flag belong to?</string>
+    <string name="imagen_cup">imagen cup</string>
+    <string name="result">Result</string>
 </resources>

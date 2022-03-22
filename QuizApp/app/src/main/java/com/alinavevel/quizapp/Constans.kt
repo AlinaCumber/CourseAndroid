@@ -2,6 +2,10 @@ package com.alinavevel.quizapp
 
 object Constans {
 
+    const val USER_NAME : String = "user_name"
+    const val CORRECT_ANSWER : String = "correct_answer"
+    const val QUESTION_COUNT : String = "count_questions"
+
     fun getQuestions(): ArrayList<Question> {
         val listsOfQuestions = ArrayList<Question>()
         val question1 = Question(
@@ -12,18 +16,18 @@ object Constans {
             "China",
             "Germany",
             "Armenia",
-            3
+            4
 
         )
         val question2 = Question(
             "What country is that?",
             2,
             R.drawable.belorus,
-            "Belorus",
+            "Belarus",
             "Armenia",
             "Moldova",
             "Russia",
-            0
+            1
         )
 
         val question3 = Question(
@@ -33,8 +37,8 @@ object Constans {
             "Cuba",
             "Austria",
             "Georgia",
-            "Japon",
-            2
+            "Japan",
+            3
 
         )
 
@@ -43,10 +47,10 @@ object Constans {
             4,
             R.drawable.kazahstan,
             "Corea",
-            "Kazakistan",
+            "Kazakhstan",
             "Germany",
-            "Lituania",
-            1
+            "Lithuania",
+            2
 
         )
 
@@ -58,7 +62,7 @@ object Constans {
             "China",
             "USA",
             "Poland",
-            0
+            1
 
         )
 
@@ -69,8 +73,8 @@ object Constans {
             "Iraq",
             "Iran",
             "Vietnam",
-            "Tadsikistan",
-            3
+            "Tajikistan",
+            4
 
         )
 

@@ -2,6 +2,7 @@ package com.alinavevel.quizapp
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -16,14 +17,21 @@ import com.alinavevel.quizapp.databinding.ActivityQuizBinding
 class QuizActivity : AppCompatActivity() {
     lateinit var binding: ActivityQuizBinding
     private var listOfQuestion = ArrayList<Question>()
-    private var currentPosition : Int = 1
-    private var selectedOption : Int = 0
+    private var currentPosition: Int = 1
+    private var selectedOption: Int = 0
+    private var correctAnswer : Int = 0
+    private var username : String? = null
+
+
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuizBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        username = intent.getStringExtra(Constans.USER_NAME)
 
         listOfQuestion = Constans.getQuestions()
 
@@ -50,44 +58,58 @@ class QuizActivity : AppCompatActivity() {
 
                 currentPosition++
 
-                when {
+                if (currentPosition <= listOfQuestion.size) {
 
-                    currentPosition <= listOfQuestion.size -> {
+                    setQuestion()
+                } else {
 
-                        setQuestion()
-                    }
-                    else -> {
+                    val intent = Intent(this, Result::class.java)
 
-                        Toast.makeText(this, "You have successfully completed the quiz.", Toast.LENGTH_SHORT).show()
-                    }
+                    intent.putExtra(Constans.USER_NAME, username)
+                    intent.putExtra(Constans.CORRECT_ANSWER, correctAnswer)
+                    intent.putExtra(Constans.QUESTION_COUNT, listOfQuestion.size)
+
+                    startActivity(intent)
+                    finish()
                 }
-            } else {
+            }
+            else {
                 val question = listOfQuestion[currentPosition - 1]
 
                 // This is to check if the answer is wrong
                 if (question.correctAnswer != selectedOption) {
                     answerView(selectedOption, R.drawable.incurrect_text_view)
+
+
+                }
+                else{
+                    correctAnswer++
                 }
 
-                // This is for correct answer
+
                 answerView(question.correctAnswer, R.drawable.correct_text_view)
 
                 if (currentPosition == listOfQuestion.size) {
                     binding.btnSubmint.text = "FINISH"
+
                 } else {
                     binding.btnSubmint.text = "GO TO NEXT QUESTION"
                 }
 
-                //selectedOption = 0
+                selectedOption = 0
+
             }
         }
+
     }
 
-    @SuppressLint("ResourceAsColor")
-    private fun selectedOption(tv: TextView, selectedOption : Int){
-        defoultOption()
 
-        currentPosition = selectedOption
+
+    @SuppressLint("ResourceAsColor")
+    private fun selectedOption(tv: TextView, mselectedOption : Int){
+
+        defoultOption()
+        selectedOption = mselectedOption
         tv.setTextColor(R.color.purple_700)
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.background = ContextCompat.getDrawable(
@@ -131,6 +153,8 @@ class QuizActivity : AppCompatActivity() {
     private fun setQuestion() {
 
         val question: Question = listOfQuestion[currentPosition - 1]
+
+        defoultOption()
 
         if (currentPosition == listOfQuestion.size) {
             binding.btnSubmint.text = "FINISH"

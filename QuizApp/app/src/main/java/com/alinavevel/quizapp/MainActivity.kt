@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
             if(binding.inputText.text!!.isNotEmpty()){
                 val intent = Intent(this, QuizActivity::class.java)
+                intent.putExtra(Constans.USER_NAME, binding.inputText.text.toString())
                 startActivity(intent)
                 finish()
             }
